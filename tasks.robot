@@ -40,8 +40,8 @@ Open the robot order website
     Open Available Browser    https://robotsparebinindustries.com/#/robot-order
 
 Create receipts folder for zip
-    #Create Directory    ${OUTPUT_DIR}${/}receipts
-    #RETURN    ${OUTPUT_DIR}${/}receipts
+    Create Directory    ${OUTPUT_DIR}${/}receipts
+    RETURN    ${OUTPUT_DIR}${/}receipts
     RETURN    ${OUTPUT_DIR}${/}
 
 Get orders
@@ -87,15 +87,15 @@ Embed the robot screenshot to the receipt PDF file
     Open Pdf    ${pdf}
     Add Watermark Image To Pdf    ${screenshot}    ${pdf}
     Close All Pdfs
-    #Remove File    ${screenshot}
+    Remove File    ${screenshot}
 
 Go to order another robot
     Click Button    id:order-another
 
 Create a ZIP file of the receipts and delete folder
     [Arguments]    ${receipt_folder}
-    Archive Folder With Zip    ${receipt_folder}    ${OUTPUT_DIR}${/}receipts.zip
-    #Remove Directory    ${receipt_folder}    recursive=${True}
+    Archive Folder With Zip    ${receipt_folder}    ${OUTPUT_DIR}${/}BotFiles${/}receipts.zip
+    Remove Directory    ${receipt_folder}    recursive=${True}
 
 Request File URL
     [Arguments]    ${DefaultURL}
